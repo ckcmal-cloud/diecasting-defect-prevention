@@ -1,0 +1,11 @@
+﻿model,target_group,feature,importance
+RandomForest,충전불량,Process|Clamping_Force,0.0347463727933458
+RandomForest,충전불량,Process|Rapid_Rise_Time,0.034430080637248
+RandomForest,충전불량,Sensor|Melting_Furnace_Temp,0.0316922437114244
+RandomForest,충전불량,Process|Pressure_Rise_Time,0.0310534370517738
+RandomForest,충전불량,Process|Cycle_Time,0.0279957236487571
+RandomForest,충전불량,Process|Spray_Time,0.027119241524765
+RandomForest,충전불량,Process|Biscuit_Thickness,0.0268876080247589
+RandomForest,충전불량,Process|Velocity_1,0.026823392804844
+RandomForest,충전불량,Process|High_Velocity,0.0256952460607767
+RandomForest,충전불량,Process|Casting_Pressure,0.0251246114672067
