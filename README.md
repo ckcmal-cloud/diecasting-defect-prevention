@@ -1,4 +1,73 @@
-[데이터 출처](https://www.kamp-ai.kr/aidataDetail?AI_SEARCH=&page=5&DATASET_SEQ=55&EQUIP_SEL=&GUBUN_SEL=&FILE_TYPE_SEL=&WDATE_SEL=)
+# 다이캐스팅 공정 데이터 기반 불량 예방 시스템 구축
+> 다이캐스팅 품질 데이터 7,535건을 활용해 주요 불량 유형을 예측하고, 공정·센서 데이터를 기반으로 불량 원인 진단 및 조기 경보 체계를 설계
 
-### Streamlit Dashboard
+
+## 프로젝트 목표:
+> 제조 공정 데이터에서 불량 발생 패턴을 분석하고, 예측 모델과 원인 진단을 결합해 현장 대응이 가능한 품질 관리 체계를 검토
+
+## Dataset
+- 원본 데이터: 7,535건
+- 공정 변수: 17개
+- 센서 변수: 14개
+- 불량 변수: 26개
+- 불량 그룹: 충전불량, 기포·내부, 표면손상, 기타
+
+
+## Analysis
+
+### 1. 공정 데이터 탐색 및 전처리
+
+- 공정·센서·불량 데이터 구조 분석
+- 결측치 처리 및 상수 변수 제거
+- 상관관계 분석 및 이상치 탐지
+
+### 2. 불량 예측 모델 구축
+
+- 26개 불량 유형을 4개 운영 그룹으로 재정의
+- 충전불량, 기포·내부, 표면손상 중심 모델링
+- SMOTE 기반 클래스 불균형 보정
+- RandomForest, LightGBM, XGBoost, CatBoost 성능 비교
+
+### 3. 원인 진단 및 운영 적용
+
+- SHAP 기반 주요 영향 변수 분석
+- 제품 타입별 정상 범위(IQR) 산출
+- 불량 확률 + 원인 변수 기반 진단 로직 설계
+
+
+## 주요 결과
+
+- 26개 개별 불량을 충전불량·기포/내부·표면손상 중심의 운영 가능한 불량 그룹으로 재정의
+- 불량 그룹별 최적 모델 적용 시 F1 Score 0.74~0.77 수준의 예측 성능 확보
+- 충전불량 주요 영향 변수로 Clamping Force, Rapid Rise Time, Melting Furnace Temp 확인
+- 제품 Type별 정상 공정 범위 차이가 커 단일 기준보다 제품군별 운영 기준이 다르게 설계
+- 예측 결과에 SHAP 기반 원인 진단과 정상 범위 편차 분석을 결합한 조기 진단 로직 설계
+
+
+## 인사이트
+
+- 다변수 상호작용 환경에서는 단일 변수보다 변수 간 관계를 함께 고려한 최적화가 중요
+- 데이터 부족으로 통합 학습을 적용하되, 운영 기준은 제품 타입별로 분리하여 활용성을 높
+- 예측 정확도뿐 아니라 원인 변수와 정상 범위 편차를 함께 제공해야 현장 의사결정에 활용 가능
+- 불량 예측 결과를 운영 지표와 함께 활용하면 사후 대응보다 사전 예방 중심의 품질 관리가 가능
+
+
+## 분석 기법
+
+- 상관관계 분석
+- Z-Score 이상치 탐지
+- Welch t-test
+- SMOTE 오버샘플링
+- Stratified Cross Validation
+- 앙상블 기반 분류 모델 비교 (RandomForest/LightGBM/XGBoost/CatBoost)
+- SHAP 기반 변수 중요도 분석
+- 임계값 최적화
+
+
+## 데이터 출처
+
+- [주조 품질보증 AI 데이터셋](https://www.kamp-ai.kr/aidataDetail?AI_SEARCH=&page=5&DATASET_SEQ=55&EQUIP_SEL=&GUBUN_SEL=&FILE_TYPE_SEL=&WDATE_SEL=)
+
+## Streamlit Dashboard
+
 - [다이캐스팅 품질 관리 대시보드](https://diecasting-defect-prevention-rsdu6t6joem5khzbga4wnq.streamlit.app/)
